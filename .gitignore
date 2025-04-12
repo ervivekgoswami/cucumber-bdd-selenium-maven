@@ -8,3 +8,4 @@ cucumber-reporting.iml
 *.iml
 /src/main/java/HelloCucumber.java
 .factorypath
+test-output/

@@ -3,40 +3,62 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com</groupId>
-	<artifactId>magento.testingboard</artifactId>
+	<artifactId>magento-bdd-framework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Magento Testing Board</name>
 	<description>Cucumber BDD framework</description>
+
+	<properties>
+		<aspectj.version>1.9.22.1</aspectj.version>
+		<allure.version>2.29.1</allure.version>
+		<cucumber.version>7.20.1</cucumber.version>
+		<jackson.version>2.18.2</jackson.version>
+		<allure.maven>2.12.0</allure.maven>
+	</properties>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.15.0</version>
+			<version>${cucumber.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>${cucumber.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>7.15.0</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>7.20.1</version>
+		</dependency>
+
 
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.20.0</version>
+			<version>4.27.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.testng/testng-->
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>7.10.2</version>
+			<version>7.11.0</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -65,9 +87,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.5.2</version>
 				<configuration>
-					<includes>
-						<include>**/TestRunner</include>
-					</includes>
+					<suiteXmlFiles>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 		</plugins>
