@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import magento.testingboard.pageobjects.InitPageObjects;
+import org.testng.Assert;
 
 
 public class CreateAccountSteps extends InitPageObjects {
@@ -17,28 +18,39 @@ public class CreateAccountSteps extends InitPageObjects {
 
 	@When("User clicks on create new account link on homepage")
 	public void user_clicks_on_create_new_account_link_on_homepage() {
-//		boolean isDisplayed = mHomePage.verifyCreatAccountLinkDisplayed();
-//		Assert.assertEquals(isDisplayed, true);
-//		mHomePage.clickOnCreatAccountLink();
+		boolean isDisplayed = mHomePage.verifyCreatAccountLinkDisplayed();
+        Assert.assertTrue(isDisplayed);
+		mHomePage.clickOnCreatAccountLink();
 	}
 
 	@When("User enters personal information as {string} and {string}")
 	public void user_enters_personal_information_as_and(String fName, String lName) {
-//		mHomePage.enterFirstName(fName);
-//		mHomePage.enterLastName(lName);
+		mHomePage.enterFirstName(fName);
+		mHomePage.enterLastName(lName);
+	}
+
+	@When("User enters first name and last name in personal information")
+	public void user_enters_personal_information() {
+		mHomePage.enterFirstName(threadTestData.get().get("FirstName"));
+		mHomePage.enterLastName(threadTestData.get().get("LastName"));
 	}
 
 	@When("User enters Sign-in Information as {string} and {string}")
 	public void user_enters_sign_in_information_as_and(String email, String password) {
-//		mHomePage.enterEmail(email);
-//		mHomePage.enterPassword(password);
-//		mHomePage.reEnterPassword(password);
+		mHomePage.enterEmail(email);
+		mHomePage.enterPassword(password);
+		mHomePage.reEnterPassword(password);
+	}
+	@When("User enters email and password in Sign-in Information")
+	public void user_enters_sign_in_information() {
+		mHomePage.enterEmail(threadTestData.get().get("Email"));
+		mHomePage.enterPassword(threadTestData.get().get("Password"));
+		mHomePage.reEnterPassword(threadTestData.get().get("Password"));
 	}
 
-	@When("User clicks on creat account button")
-	public void user_clicks_on_creat_account_button() throws InterruptedException {
-//		mHomePage.clickCreateAccountButton();
-
+	@When("User clicks on create account button")
+	public void user_clicks_on_create_account_button() throws InterruptedException {
+		mHomePage.clickCreateAccountButton();
 	}
 
 	@Then("Verify user is logged into application successfully")
